@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const  api = axios.create({baseURL: 'https://prontaentrega-api.herokuapp.com/'});
+const  api = axios.create({baseURL: 'https://prontaentrega-api.herokuapp.com'});
 
 
 export default api;
