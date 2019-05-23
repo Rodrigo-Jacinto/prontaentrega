@@ -11,6 +11,7 @@ export default class Login extends Component {
     }
 
     componentWillMount() {
+        
         if (sessionStorage.getItem('user-token')) {
             sessionStorage.removeItem('user-token');
         }
@@ -21,7 +22,7 @@ export default class Login extends Component {
 
         let response = await api.post('/login', { usuario: this.usuario.value, senha: this.senha.value })
 
-        if(response.data.resultado) {
+        if (response.data.resultado) {
             sessionStorage.setItem('user-token', true);
             browserHistory.push('/menu');
         }
