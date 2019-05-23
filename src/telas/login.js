@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import InputForm from './InputForm';
 import { browserHistory } from "react-router";
+import api from '../services/api'
+
 
 export default class Login extends Component {
 
@@ -9,41 +11,20 @@ export default class Login extends Component {
     }
 
     componentWillMount() {
-        if(sessionStorage.getItem('user-token')){ 
+        if (sessionStorage.getItem('user-token')) {
             sessionStorage.removeItem('user-token');
-        } 
+        }
     }
 
-    enviaForm(e) {
+    enviaForm = async (e) => {
         e.preventDefault();
 
-        var request = {
-            method: 'POST',
-            body: JSON.stringify({ usuario: this.usuario.value, senha: this.senha.value }),
-            headers: new Headers({
-                'content-type': 'application/json'
-            })
+        let response = await api.post('/login', { usuario: this.usuario.value, senha: this.senha.value })
+
+        if(response.data.resultado) {
+            sessionStorage.setItem('user-token', true);
+            browserHistory.push('/menu');
         }
-
-        fetch('http://localhost:3001/login', request).then(response => {
-
-            response.json().then(dados => {
-
-                if (dados.resultado) {
-                   sessionStorage.setItem('user-token', true);
-                   browserHistory.push('/menu');
-                }
-                else {
-
-                }
-
-            }).catch(erro => {
-                console.log("Erro Json", erro);
-            })
-
-        }).catch((erro) => {
-            console.log('Erro:', erro);
-        });
 
     }
 
