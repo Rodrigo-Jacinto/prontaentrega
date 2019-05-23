@@ -11,7 +11,7 @@ export default class Login extends Component {
     }
 
     componentWillMount() {
-        
+
         if (sessionStorage.getItem('user-token')) {
             sessionStorage.removeItem('user-token');
         }
@@ -58,6 +58,20 @@ export default class Login extends Component {
                                     <button type="submit" className="btn btn-primary">Entrar</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col mt-3">
+                    <div className="card mx-auto tam bg-dark">
+
+                        <div className="card-header">
+                            <h5 className="text-center text-light">Conta para acessar o sistema</h5>
+                        </div>
+
+                        <div className="card-body">
+                            <span className="text-primary">Usuario: </span><span className="text-light">admin</span><br/>
+                            <span className="text-primary">Senha: </span><span className="text-light">admin</span>
                         </div>
                     </div>
                 </div>

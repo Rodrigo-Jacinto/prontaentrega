@@ -93,7 +93,7 @@ export default class FormCliente extends Component {
           <InputForm value={this.state.rua} onChange={this.salvaAlteracao.bind(this, 'rua')} type="text" id="rua" placeholder="Digite sua Cidade" name="rua" label="Rua" />
           <InputForm value={this.state.numero} onChange={this.salvaAlteracao.bind(this, 'numero')} type="number" id="numero" placeholder="Digite o numero da Casa" name="numero" label="Número da casa" />
 
-          <button type="submit" className="btn btn-primary">Atualizar</button>
+          <button type="submit" className="btn btn-primary">Cadastrar</button>
           <Link to="/cliente" className="btn ml-3 btn-danger">Cancelar</Link>
         </form>
       </main>
